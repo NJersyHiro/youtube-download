@@ -130,33 +130,15 @@ def main():
     if len(sys.argv) > 1:
         video_url = sys.argv[1]
     else:
-        # デフォルトURL
-        video_url = "https://www.youtube.com/watch?v=E_OShqUZRhs&ab_channel=Brighte"
+        print("使用方法: python download_youtube_hq.py [YouTube URL] [画質]")
+        print("例: python download_youtube_hq.py https://www.youtube.com/watch?v=... best")
+        sys.exit(1)
     
     # 画質の選択
     if len(sys.argv) > 2:
         quality = sys.argv[2]
     else:
-        print("\n画質を選択してください:")
-        print("1. best - 最高画質（推奨、要ffmpeg）")
-        print("2. 1080p - 1080p以下")
-        print("3. 720p - 720p以下") 
-        print("4. 480p - 480p以下")
-        print("5. mp4 - MP4形式のみ（互換性重視）")
-        print("6. list - 利用可能なフォーマットを表示")
-        
-        choice = input("\n選択 (1-6) [default: 1]: ") or "1"
-        
-        quality_map = {
-            "1": "best",
-            "2": "1080p",
-            "3": "720p",
-            "4": "480p",
-            "5": "mp4",
-            "6": "list"
-        }
-        
-        quality = quality_map.get(choice, "best")
+        quality = "best"  # デフォルトは最高画質
     
     # 依存関係の確認
     if not check_and_install_dependencies():

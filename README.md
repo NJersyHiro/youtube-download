@@ -1,25 +1,15 @@
 # YouTube Download Script
 
-YouTube動画をダウンロードするPythonスクリプト集
+YouTube動画を高画質でダウンロードするPythonスクリプト
 
-## スクリプト一覧
+## 使い方
 
-### 1. `download_youtube.py` - 基本版
-互換性重視の基本的なダウンロードスクリプト
-
-```bash
-./venv/bin/python download_youtube.py
-```
-
-### 2. `download_youtube_hq.py` - 高画質版
-最高画質でのダウンロードに対応した拡張版
+### `download_youtube_hq.py` - 高画質ダウンロードスクリプト
+最高画質でのダウンロードに対応したスクリプト
 
 ```bash
-# デフォルトURL（最高画質）でダウンロード
-./venv/bin/python download_youtube_hq.py
-
-# URLを指定してダウンロード
-./venv/bin/python download_youtube_hq.py "YouTubeのURL" best
+# 基本的な使い方（最高画質でダウンロード）
+./venv/bin/python download_youtube_hq.py "YouTubeのURL"
 
 # 画質を指定してダウンロード
 ./venv/bin/python download_youtube_hq.py "YouTubeのURL" 1080p
@@ -39,13 +29,13 @@ YouTube動画をダウンロードするPythonスクリプト集
 
 ## 機能
 
-- YouTube動画をダウンロード
+- YouTube動画を高画質でダウンロード
 - 最高画質（1080p以上）のダウンロードに対応
 - 動画と音声を自動結合（ffmpeg使用）
-- 自動的にyt-dlpライブラリをインストール
 - ダウンロードした動画は`downloads`フォルダに保存
-- 画質選択機能
+- 画質選択機能（best/1080p/720p/480p/mp4）
 - 利用可能なフォーマットの確認機能
+- 音声コーデックをAACに自動変換（互換性向上）
 
 ## 必要条件
 
@@ -74,8 +64,14 @@ brew install ffmpeg
 # 仮想環境の作成
 python3 -m venv venv
 
-# yt-dlpのインストール
-./venv/bin/pip install yt-dlp
+# 仮想環境の有効化
+# Linux/Mac:
+source venv/bin/activate
+# Windows:
+# venv\Scripts\activate
+
+# 依存パッケージのインストール
+pip install -r requirements.txt
 ```
 
 ## トラブルシューティング
