@@ -33,10 +33,11 @@ def download_video(url, output_dir="downloads"):
     # yt-dlpのオプション設定
     ydl_opts = {
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
-        'format': 'best[ext=mp4]/best',  # MP4形式で最高品質を選択
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',  # 最高画質の動画と音声を結合
         'quiet': False,
         'no_warnings': False,
         'extract_flat': False,
+        'merge_output_format': 'mp4',  # 出力形式をMP4に統一
     }
     
     try:
@@ -53,7 +54,7 @@ def download_video(url, output_dir="downloads"):
 
 def main():
     # 指定されたURLでダウンロード
-    video_url = "https://www.youtube.com/watch?v=w0R6dWZxYmM&ab_channel=%E4%BD%90%E3%80%85%E6%9C%A8%E5%B8%8C%28%E4%BB%AE%29"
+    video_url = "https://www.youtube.com/watch?v=E_OShqUZRhs&ab_channel=Brighte"
     
     # yt-dlpの確認とインストール
     if not check_and_install_yt_dlp():
