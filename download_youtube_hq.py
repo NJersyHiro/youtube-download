@@ -98,6 +98,13 @@ def download_video(url, output_dir="downloads", quality="best"):
             'key': 'FFmpegVideoConvertor',
             'preferedformat': 'mp4',  # MP4に変換
         }],
+        # 音声コーデックをAACに変換
+        'postprocessor_args': [
+            '-c:v', 'copy',  # 映像はそのままコピー
+            '-c:a', 'aac',   # 音声をAACに変換
+            '-b:a', '192k',  # 音声ビットレート192kbps
+            '-movflags', '+faststart'  # ストリーミング最適化
+        ],
     }
     
     try:
